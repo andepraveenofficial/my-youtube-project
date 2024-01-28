@@ -47,8 +47,8 @@ Drawing :
    * Excalidraw 
 
 ### Hoisting
+* Github Pages => `https://andepraveenofficial.github.io/my-youtube-project`
 * netlify
-* Github Pages
 * Firebase
 
 ### APIs
