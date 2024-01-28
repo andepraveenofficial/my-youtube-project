@@ -1,5 +1,5 @@
 {
-  "homepage": "https://andepraveenofficial.github.io",
+  "homepage": "https://andepraveenofficial.github.io/my-youtube-project",
   "name": "my-youtube-project",
   "private": true,
   "version": "0.0.0",
@@ -9,8 +9,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "predeploy": "gh-pages -d build",
-    "deploy": "gh-pages -d dist"
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
