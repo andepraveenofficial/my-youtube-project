@@ -49,7 +49,7 @@ Drawing :
 ### Hoisting
 * Github Pages => `https://andepraveenofficial.github.io/my-youtube-project`
 * netlify
-* Firebase
+* Firebase 
 
 ### APIs
 * Developers Youtube
