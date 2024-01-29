@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
       <h1 className="text-green-500">
-        Hello World
+        Youtube project is on working
       </h1>
     </div>
   )
