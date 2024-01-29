@@ -1,3 +1,5 @@
+import React from 'react'
+
 /* -----> Component <----- */
 const App = () => {
   console.log("App")
@@ -15,3 +17,5 @@ const App = () => {
 
 /* -----> Export <----- */
 export default App
+
+
