@@ -1,3 +1,6 @@
+/* -----> External Components <----- */
+import Header from "./Layouts/Header"
+import Body from "./Pages/Body"
 
 /* -----> Component <----- */
 const App = () => {
@@ -6,9 +9,8 @@ const App = () => {
   // Return JSX
   return (
     <div>
-      <h1 className="text-green-500">
-        Youtube project is on working
-      </h1>
+      <Header />
+      <Body />
     </div>
   )
 
