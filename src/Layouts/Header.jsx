@@ -1,4 +1,10 @@
 
+/* -----> Third Party Packages <----- */
+import { useDispatch, useSelector } from "react-redux";
+
+/* -----> Global Store Actions <----- */
+import { cacheResults } from "../Store/searchSlice";
+
 /* -----> Assets <----- */
 import { RxHamburgerMenu } from "react-icons/rx";
 import YoutubeLogo from './../Assets/Logos/Youtube-Logo.png';
@@ -7,12 +13,89 @@ import { CgProfile } from "react-icons/cg";
 
 /* -----> Hooks <----- */
 import useGithubProfile from "../Hooks/useGithubProfile";
+import { useEffect, useState } from "react";
+
+/* -----> Services <----- */
+import { YOUTUBE_SEARCH_SUGGESTIONS } from "../Services/SearchSuggestions";
+
+/* -----> Hard Code <----- */
+// import { suggestionsHardCode } from './../Utils/hardCode.js';
+
 
 /* -----> Component <----- */
 const Header = () => {
-	console.log("Header Layout")
+	console.log("Header Layout");
 
+	// Local State
+	const [searchQuery, setSearchQuery] = useState("")
+	const [suggestions, setSuggestions] = useState([])
+	// const [cacheResults, setCacheResults] = useState({}) // Redux implemented
+
+
+	// Global Store
+	const searchCache = useSelector((store) => store.search)
+	const dispatch = useDispatch()
+
+	// Hooks
 	const profile = useGithubProfile();
+
+	// Methods 
+	const getSearchSuggestions = async () => {
+		console.log("getSearchSuggestions API called")
+		const response = await fetch(YOUTUBE_SEARCH_SUGGESTIONS + searchQuery);
+		const data = await response.json();
+		console.log(data[1])
+		const suggestionsList = data[1];
+		setSuggestions(suggestionsList);
+		dispatch(cacheResults({ [searchQuery]: suggestionsList }))
+	}
+
+	useEffect(() => {
+		// Debounce mechanism: Make an API call after every key press, but only if the difference between two consecutive API calls is less than 200ms.
+
+		/*
+		 * Example Flow:
+		 * 
+		 * 1. Key Press: 'i'
+		 *    - Render the component.
+		 *    - Inside useEffect().
+		 *    - Start a timer to make an API call after 200ms.
+		 * 
+		 * 2. Key Press: 'ip'
+		 *    - Destroy the component (useEffect cleanup).
+		 *    - Re-render the component.
+		 *    - Inside useEffect().
+		 *    - Start a timer to make an API call after 200ms.
+		 * 
+		 * 3. setTimeout(200) - Trigger an API call.
+		 *    - API call initiated due to the debounced timer.
+		 * 
+		 * Note: The debounce mechanism ensures that API calls are made only if the time gap between consecutive key presses is less than 200ms.
+		 */
+
+		const timerId = setTimeout(() => {
+			/*
+		searchCache = {
+			"iphone":["iphone 11", "iphone 14"]
+		  }
+
+		  searchQuery = iphone
+		*/
+			if (searchCache[searchQuery]) {
+				setSuggestions(searchCache[searchQuery])
+			}
+			else {
+				getSearchSuggestions()
+			}
+		}, 200
+
+		)
+
+		return () => {
+			clearTimeout(timerId)
+		}
+
+	}, [searchQuery])
 
 	// Return JSX
 	return (
@@ -28,6 +111,8 @@ const Header = () => {
 						type="text"
 						placeholder="Search"
 						className="w-full bg-black outline-none p-2 h-10 rounded-tl-md rounded-bl-md"
+						value={searchQuery}
+						onChange={(event) => setSearchQuery(event.target.value)}
 					/>
 					<div className="bg-[#303030] h-10 w-12 flex items-center justify-center rounded-tr-md rounded-br-md">
 						<AiOutlineSearch className="w-6 h-6  text-[#aaaaaa] cursor-pointer" />
@@ -35,12 +120,7 @@ const Header = () => {
 				</div>
 
 				<div className="absolute flex flex-col items-center bg-pink-500 w-[31.3%] rounded-br-md rounded-bl-md">
-					<h1>Suggestion 1</h1>
-					<h1>Suggestion 2</h1>
-					<h1>Suggestion 3</h1>
-					<h1>Suggestion 4</h1>
-					<h1>Suggestion 5</h1>
-					<h1>Suggestion 6</h1>
+					{suggestions.map((suggestion, index) => <h1 key={index}>{suggestion}</h1>)}
 				</div>
 			</div>
 
