@@ -27,6 +27,7 @@ const AppLayout = () => {
 
 /* -----> Routing Setup <----- */
 const appRouter = createBrowserRouter([{
+  basename: "/",
   path: "/",
   element: <AppLayout />,
   children: [
