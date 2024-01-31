@@ -1,11 +1,15 @@
 /* -----> External Components <----- */
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import Header from "./Layouts/Header"
 import Sidebar from "./Layouts/Sidebar"
 import Body from "./Pages/Body"
+import VideosPage from "./Pages/VideosPage"
+import WatchPage from "./Pages/WatchPage"
+
 
 /* -----> Component <----- */
-const App = () => {
-  console.log("App")
+const AppLayout = () => {
+  console.log("AppLayout")
 
   // Return JSX
   return (
@@ -15,11 +19,28 @@ const App = () => {
         <Sidebar />
         <Body />
       </div>
-
     </div>
   )
 
 }
+
+
+/* -----> Routing Setup <----- */
+const appRouter = createBrowserRouter([{
+  path: "/",
+  element: <AppLayout />,
+  children: [
+    { path: "/", element: <VideosPage /> },
+    { path: "/watch", element: <WatchPage /> },
+  ]
+}])
+
+
+const App = () => {
+  return <RouterProvider router={appRouter} />
+}
+
+
 
 /* -----> Export <----- */
 export default App

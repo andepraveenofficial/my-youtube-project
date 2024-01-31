@@ -1,3 +1,5 @@
+/* -----> Third Party Packages <----- */
+import { Outlet } from "react-router-dom"
 
 
 /* -----> Component <----- */
@@ -6,7 +8,9 @@ const Body = () => {
 
     // Return JSX
     return (
-        <div className="flex-grow bg-green-300 h-[1000px] -z-10">Body</div>
+        <div className="flex-grow bg-green-300 h-[1000px] -z-10">
+            <Outlet />
+        </div>
     )
 }
 
