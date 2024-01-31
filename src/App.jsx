@@ -6,18 +6,24 @@ import Body from "./Pages/Body"
 import VideosPage from "./Pages/VideosPage"
 import WatchPage from "./Pages/WatchPage"
 
+/* -----> Global State <----- */
+import { useSelector } from "react-redux"
 
 /* -----> Component <----- */
 const AppLayout = () => {
   console.log("AppLayout")
 
+  // Global State 
+  const sidebarToggle = useSelector((state) => state.sidebar.isOpen)
+  console.log(sidebarToggle)
+
   // Return JSX
   return (
 
-    <div>
+    <div className="">
       <Header />
-      <div className="absolute flex flex-row w-screen mt-16">
-        <Sidebar />
+      <div className="absolute flex flex-row w-screen mt-16 bg-black -z-10">
+        {sidebarToggle && <Sidebar />}
         <Body />
       </div>
     </div>
@@ -32,7 +38,7 @@ const appRouter = createBrowserRouter([{
   element: <AppLayout />,
   children: [
     { path: "/", element: <VideosPage /> },
-    { path: "/watch", element: <WatchPage /> },
+    { path: "/watch/:videoId", element: <WatchPage /> },
   ]
 }],)
 

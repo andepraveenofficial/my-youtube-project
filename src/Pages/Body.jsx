@@ -8,7 +8,7 @@ const Body = () => {
 
     // Return JSX
     return (
-        <div className="flex-grow bg-green-300 h-[1000px] -z-10">
+        <div className="flex-grow bg-[#000000] -z-10">
             <Outlet />
         </div>
     )

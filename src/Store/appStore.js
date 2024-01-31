@@ -2,11 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 
 /* -----> Slices <----- */
 import searchSlice from "./searchSlice";
+import sidebarToggleSlice from "./sidebarToggleSlice";
+
 
 /* -----> Global Store <----- */
 const appStore = configureStore({
 reducer:{
-    search:searchSlice
+    search:searchSlice,
+    sidebar:sidebarToggleSlice
 }
 })
 

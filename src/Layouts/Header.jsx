@@ -17,6 +17,8 @@ import { useEffect, useState } from "react";
 
 /* -----> Services <----- */
 import { YOUTUBE_SEARCH_SUGGESTIONS } from "../Services/SearchSuggestions";
+import { toggleSidebar } from "../Store/sidebarToggleSlice";
+
 
 /* -----> Hard Code <----- */
 // import { suggestionsHardCode } from './../Utils/hardCode.js';
@@ -31,7 +33,6 @@ const Header = () => {
 	const [suggestions, setSuggestions] = useState([])
 	// const [cacheResults, setCacheResults] = useState({}) // Redux implemented
 	const [showSearchSuggestions, setShowSearchSuggestions] = useState(false)
-
 
 	// Global Store
 	const searchCache = useSelector((store) => store.search)
@@ -102,7 +103,7 @@ const Header = () => {
 	return (
 		<div className="fixed w-full bg-[#212121] text-[#aaa] h-16 pr-5 pl-5 grid grid-cols-12">
 			<div className="flex items-center gap-3 col-span-4">
-				<RxHamburgerMenu className="w-6 h-6 cursor-pointer" />
+				<RxHamburgerMenu className="w-6 h-6 cursor-pointer" onClick={() => dispatch(toggleSidebar())} />
 				<img src={YoutubeLogo} alt="Youtube-Logo.svg" className="cursor-pointer" />
 			</div>
 

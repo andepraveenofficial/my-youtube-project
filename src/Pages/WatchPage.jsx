@@ -1,4 +1,3 @@
-
 /* -----> Component <----- */
 const WatchPage = () => {
     console.log("WatchPage")
