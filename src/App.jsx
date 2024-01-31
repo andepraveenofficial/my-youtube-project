@@ -35,7 +35,7 @@ const appRouter = createBrowserRouter([{
     { path: "/watch", element: <WatchPage /> },
   ]
 }], {
-  basename: "https://my-youtube-website.netlify.app/",
+  basename: "my-youtube-website.netlify.app/",
 })
 
 
