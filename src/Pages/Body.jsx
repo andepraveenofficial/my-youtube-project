@@ -6,7 +6,7 @@ const Body = () => {
 
     // Return JSX
     return (
-        <div className="h-[10000px] bg-green-300">Body</div>
+        <div className="flex-grow bg-green-300 h-[1000px] -z-10">Body</div>
     )
 }
 

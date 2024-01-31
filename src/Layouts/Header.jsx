@@ -30,6 +30,7 @@ const Header = () => {
 	const [searchQuery, setSearchQuery] = useState("")
 	const [suggestions, setSuggestions] = useState([])
 	// const [cacheResults, setCacheResults] = useState({}) // Redux implemented
+	const [showSearchSuggestions, setShowSearchSuggestions] = useState(false)
 
 
 	// Global Store
@@ -113,6 +114,8 @@ const Header = () => {
 						className="w-full bg-black outline-none p-2 h-10 rounded-tl-md rounded-bl-md"
 						value={searchQuery}
 						onChange={(event) => setSearchQuery(event.target.value)}
+						onFocus={() => { setShowSearchSuggestions(true) }}
+						onBlur={() => setShowSearchSuggestions(false)}
 					/>
 					<div className="bg-[#303030] h-10 w-12 flex items-center justify-center rounded-tr-md rounded-br-md">
 						<AiOutlineSearch className="w-6 h-6  text-[#aaaaaa] cursor-pointer" />
@@ -120,7 +123,7 @@ const Header = () => {
 				</div>
 
 				<div className="absolute flex flex-col items-center bg-pink-500 w-[31.3%] rounded-br-md rounded-bl-md">
-					{suggestions.map((suggestion, index) => <h1 key={index}>{suggestion}</h1>)}
+					{showSearchSuggestions && suggestions.map((suggestion, index) => <h1 key={index}>{suggestion}</h1>)}
 				</div>
 			</div>
 

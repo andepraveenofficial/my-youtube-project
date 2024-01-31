@@ -1,5 +1,6 @@
 /* -----> External Components <----- */
 import Header from "./Layouts/Header"
+import Sidebar from "./Layouts/Sidebar"
 import Body from "./Pages/Body"
 
 /* -----> Component <----- */
@@ -10,7 +11,11 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Body />
+      <div className="absolute flex flex-row w-screen mt-16">
+        <Sidebar />
+        <Body />
+      </div>
+
     </div>
   )
 
