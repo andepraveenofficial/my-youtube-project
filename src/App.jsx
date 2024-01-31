@@ -13,6 +13,7 @@ const AppLayout = () => {
 
   // Return JSX
   return (
+
     <div>
       <Header />
       <div className="absolute flex flex-row w-screen mt-16">
@@ -27,14 +28,15 @@ const AppLayout = () => {
 
 /* -----> Routing Setup <----- */
 const appRouter = createBrowserRouter([{
-  basename: "my-youtube-website.netlify.app",
   path: "/",
   element: <AppLayout />,
   children: [
     { path: "/", element: <VideosPage /> },
     { path: "/watch", element: <WatchPage /> },
   ]
-}])
+}], {
+  basename: "https://my-youtube-website.netlify.app/",
+})
 
 
 const App = () => {
