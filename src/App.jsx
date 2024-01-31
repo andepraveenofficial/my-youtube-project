@@ -27,12 +27,12 @@ const AppLayout = () => {
 
 /* -----> Routing Setup <----- */
 const appRouter = createBrowserRouter([{
-  basename: "https://my-youtube-website.netlify.app",
+  basename: "my-youtube-website.netlify.app",
   path: "/",
   element: <AppLayout />,
   children: [
-    { path: "", element: <VideosPage /> },
-    { path: "watch", element: <WatchPage /> },
+    { path: "/", element: <VideosPage /> },
+    { path: "/watch", element: <WatchPage /> },
   ]
 }])
 
