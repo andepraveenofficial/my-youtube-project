@@ -90,3 +90,6 @@ export const mostPopularVideosHardCode = {
 "commentCount": "4341"
 }
 };
+
+
+export const liveChatMessagesHardCode = ["Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙","Hello 🌭🥙1", ]

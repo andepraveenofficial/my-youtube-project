@@ -5,9 +5,6 @@ import { useEffect, useState } from "react";
 import { YOUTUBE_CHANNEL_API } from "../Services/YOUTUBEAPIs";
 import { useNavigate } from "react-router-dom";
 
-
-
-
 /* -----> Component <----- */
 const VideoCard = (props) => {
     console.log("   VideoCard")
@@ -32,6 +29,9 @@ const VideoCard = (props) => {
         views: viewCount,
         duration,
     };
+
+    const minutes = cardObject.duration.slice(2, -1).split('M')[0];
+    const seconds = cardObject.duration.slice(5, -1).split('S')[0];
 
     // Methods 
     const getChannelData = async () => {
@@ -70,7 +70,7 @@ const VideoCard = (props) => {
 
                     <div className="flex flex-row items-start gap-2 justify-start mt-1 text-[12px] font-roboto text-gray-500">
                         <p>{cardObject.views} Views</p>
-                        <p>{cardObject.duration} </p>
+                        <p>{`${minutes}min ${seconds}sec`} </p>
                     </div>
                 </div>
             </div>
