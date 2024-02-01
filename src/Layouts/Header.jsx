@@ -1,6 +1,7 @@
 
 /* -----> Third Party Packages <----- */
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 /* -----> Global Store Actions <----- */
 import { cacheResults } from "../Store/searchSlice";
@@ -18,6 +19,7 @@ import { useEffect, useState } from "react";
 /* -----> Services <----- */
 import { YOUTUBE_SEARCH_SUGGESTIONS } from "../Services/SearchSuggestions";
 import { toggleSidebar } from "../Store/sidebarToggleSlice";
+
 
 
 /* -----> Hard Code <----- */
@@ -104,7 +106,7 @@ const Header = () => {
 		<div className="fixed w-full bg-[#212121] text-[#aaa] h-16 pr-5 pl-5 grid grid-cols-12">
 			<div className="flex items-center gap-3 col-span-4">
 				<RxHamburgerMenu className="w-6 h-6 cursor-pointer" onClick={() => dispatch(toggleSidebar())} />
-				<img src={YoutubeLogo} alt="Youtube-Logo.svg" className="cursor-pointer" />
+				<Link to="/"><img src={YoutubeLogo} alt="Youtube-Logo.svg" className="cursor-pointer" /></Link>
 			</div>
 
 			<div className=" col-span-4 m-3">

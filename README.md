@@ -51,7 +51,7 @@ Drawing :
 
 ### React Roter working in netlify
 In your public folder  create a file called `_redirects` with no extension. Then, type the following inside it:
-/*    /index.html    200
+`/*    /index.html    200`
 
 Commit and push to your github. Then React Router it handles all the routes.Netlify must know where to redirect you to. That is what we are specifying in the `_redirects` file.
 

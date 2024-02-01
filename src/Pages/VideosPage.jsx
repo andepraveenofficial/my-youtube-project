@@ -39,17 +39,23 @@ const VideosPage = () => {
         getMostPopularVideos()
     }, [])
 
+
     // Rturn JSX
     return (
         <div className='flex flex-row flex-wrap'>
-            {mostPopularVideos.map((each) => (
-                <Link to={`/watch/${each.id}`} key={each.id}>
-                    <VideoCard data={each} />
-                </Link>))}
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].map((each, index) => (<VideoCardShimmer key={index} />))}
-
+            {mostPopularVideos.length !== 0 ? (
+                mostPopularVideos.map((each) => (
+                    <Link to={`/watch/${each.id}`} key={each.id}>
+                        <VideoCard data={each} />
+                    </Link>
+                ))
+            ) : (
+                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].map((each, index) => (
+                    <VideoCardShimmer key={index} />
+                ))
+            )}
         </div>
-    )
+    );
 }
 
 /* -----> Export <----- */
